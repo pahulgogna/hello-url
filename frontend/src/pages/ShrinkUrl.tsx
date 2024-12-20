@@ -37,6 +37,11 @@ function ShrinkUrl() {
                 })
             })
             if(data && data.data && data.data.detail){
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(0)
+                    }, 3000)
+                })
                 setKey(data.data.detail)
             }
             else{
@@ -89,13 +94,13 @@ function ShrinkUrl() {
                                 Your URL:
                             </div>
                             <div className="flex">
-                                <a href={window.location + `${key}`} target="_blanck" className="underline text-blue-600">
-                                    {window.location + `${key}`}                    
+                                <a href={key} target="_blanck" className="underline text-blue-600">
+                                    {key}                    
                                 </a>
                                 <div className="ml-3 hover:cursor-pointer" 
                                 onClick={() => {
                                     setCopied(true)
-                                    navigator.clipboard.writeText(window.location + `${key}`)
+                                    navigator.clipboard.writeText(key)
                                     setTimeout(() => {
                                         setCopied(false)
                                     }, 2000)
